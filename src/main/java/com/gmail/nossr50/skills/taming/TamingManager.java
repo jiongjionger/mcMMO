@@ -244,6 +244,11 @@ public class TamingManager extends SkillManager {
         Player player = getPlayer();
 
         ItemStack heldItem = player.getInventory().getItemInMainHand();
+        
+        if (heldItem.hasItemMeta() && (heldItem.getItemMeta().hasDisplayName() || heldItem.getItemMeta().hasLore() || heldItem.getItemMeta().hasEnchants())) {
+			return;
+		}
+        
         int heldItemAmount = heldItem.getAmount();
         Location location = player.getLocation();
 
